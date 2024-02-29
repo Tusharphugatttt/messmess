@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website Title</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: black;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .watermark {
+            position: absolute;
+            font-size: 80px;
+            opacity: 0.2;
+            transform: rotate(-45deg);
+            pointer-events: none;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        form {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1 id="changeText" onclick="changeText()">
+            ESSE KESSE MESS CHALOGE BHAI?
+            <span class="watermark">MESS</span>
+        </h1>
+        <h2>Click on the text</h2>
+        <button onclick="openForm()">Want to become mess manager? Apply here</button>
+        
+        <form id="applicationForm">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="occupation">What do you do in Telegence:</label>
+            <input type="text" id="occupation" name="occupation" required>
+
+            <label>Are you dalla?</label>
+            <input type="radio" id="yes" name="dalla" value="yes" required>
+            <label for="yes">Yes</label>
+            <input type="radio" id="no" name="dalla" value="no" required>
+            <label for="no">No</label>
+
+            <button type="button" onclick="checkDalla()">Submit</button>
+        </form>
+
+        <p id="dallaMessage" style="display: none; color: red; font-weight: bold;"></p>
+    </div>
+
+    <script>
+        function changeText() {
+            document.getElementById("changeText").innerHTML = "Haha TUM NHI CHLA PAOGE";
+        }
+
+        function openForm() {
+            document.getElementById("applicationForm").style.display = "flex";
+        }
+
+        function checkDalla() {
+            var dallaOption = document.querySelector('input[name="dalla"]:checked');
+            if (dallaOption && dallaOption.value === "no") {
+                document.getElementById("dallaMessage").innerText = "Hey, you should be dalla to become the mess manager.";
+                document.getElementById("dallaMessage").style.display = "block";
+            } else {
+                // Process the form data here or submit the form
+                // For simplicity, we'll just hide the form in this example
+                document.getElementById("applicationForm").style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
